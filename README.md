@@ -1,1 +1,5 @@
-Every Project Should have proper Readme file
+# C#
+# Build
+  dotnet build
+# Run
+  dotnet run
