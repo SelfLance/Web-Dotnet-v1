@@ -32,6 +32,20 @@ dotnet ef migrations add InitialCreate
 # Update database
 dotnet ef database update
 # Update README.md:
+# C#
+# Build
+  dotnet build
+# Run
+  dotnet run
+
+# Entity Framework Core Commands
+  dotnet add package Microsoft.EntityFrameworkCore
+  dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+  dotnet add package Microsoft.EntityFrameworkCore.Design
+
+# Database Migrations
+  dotnet ef migrations add [MigrationName]
+  dotnet ef database update
 
 
  
