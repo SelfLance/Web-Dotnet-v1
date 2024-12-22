@@ -43,6 +43,10 @@ dotnet ef database update
   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
   dotnet add package Microsoft.EntityFrameworkCore.Design
 
+# Run Your SQL Server Instance First
+For Running in Docker Container use Command like 
+1- Stop All ready Running SQL server or use same password or running server
+docker run -d --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SqlServer2024" -p 1433:1433 mcr.microsoft.com/mssql/server:2022-latest
 # Database Migrations
   dotnet ef migrations add [MigrationName]
   dotnet ef database update
