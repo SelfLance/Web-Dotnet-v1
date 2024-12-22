@@ -21,6 +21,10 @@ namespace WebApp_v1.Controllers
             var items = await _context.Items.ToListAsync();
             return View(items);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
 
     }
 }
