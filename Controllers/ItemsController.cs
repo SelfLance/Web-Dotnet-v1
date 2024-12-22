@@ -38,5 +38,41 @@ namespace WebApp_v1.Controllers
             }
             return View(item);
         }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var item = await _context.Items.FindAsync(id);
+                if (item == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return View(item);
+                }
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Price")] Item item)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Items.Update(item);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                return View(item);
+            }
+        }
     }
 }
