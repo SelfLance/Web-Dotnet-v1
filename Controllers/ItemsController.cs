@@ -26,5 +26,16 @@ namespace WebApp_v1.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Id", "Name", "Price")] Item item)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(item);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(item);
+        }
     }
 }
