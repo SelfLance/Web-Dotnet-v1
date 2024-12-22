@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApp_v1.Data;
 using WebApp_v1.Models;
 
@@ -15,9 +16,9 @@ namespace WebApp_v1.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var items = _context.Items;
+            var items = await _context.Items.ToListAsync();
             return View(items);
         }
 

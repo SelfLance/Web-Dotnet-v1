@@ -11,8 +11,8 @@ using WebApp_v1.Data;
 namespace WebApp_v1.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    [Migration("20241222064603_First Migration")]
-    partial class FirstMigration
+    [Migration("20241222094005_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,9 @@ namespace WebApp_v1.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
