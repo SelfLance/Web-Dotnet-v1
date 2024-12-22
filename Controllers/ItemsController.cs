@@ -1,6 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
-
+using WebApp_v1.Data;
 using WebApp_v1.Models;
 
 namespace WebApp_v1.Controllers
@@ -8,13 +8,18 @@ namespace WebApp_v1.Controllers
 
     public class ItemsController : Controller
     {
-        public IActionResult Overview()
+        public readonly MyAppContext _context;
+
+        public ItemsController(MyAppContext context)
         {
-            var item = new Item() { Name = "Test1" };
-            // var item1 = new Item() { Name = "Test" };
-            return View(item);
+            _context = context;
         }
 
+        public IActionResult Index()
+        {
+            var items = _context.Items;
+            return View(items);
+        }
 
     }
 }
