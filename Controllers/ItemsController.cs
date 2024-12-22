@@ -15,19 +15,20 @@ namespace WebApp_v1.Controllers
         {
             _context = context;
         }
-
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var items = await _context.Items.ToListAsync();
             return View(items);
         }
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Id", "Name", "Price")] Item item)
+        public async Task<IActionResult> Create([Bind("Id, Name, Price")] Item item)
         {
             if (ModelState.IsValid)
             {
