@@ -74,5 +74,40 @@ namespace WebApp_v1.Controllers
                 return View(item);
             }
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var item = await _context.Items.FindAsync(id);
+                if (item == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return View(item);
+                }
+            }
+
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var item = await _context.Items.FindAsync(id);
+            if (item != null)
+            {
+                _context.Items.Remove(item);
+                await _context.SaveChangesAsync();
+
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
